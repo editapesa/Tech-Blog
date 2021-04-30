@@ -9,6 +9,7 @@ This project is licensed under the MIT license. Click the link below for more in
 [MIT License](https://opensource.org/licenses/MIT)
 ​
 ## Installation
+After running `npm init -y` and `npm i` in the terminal, the following npm packages were installed: `express-handlebars`, `express`, `MySQL2`, `Sequelize`, `dotenv`, `bcrypt`, `express-session`, and `connect-session-sequelize`.
 
 ## Visuals
 Click here to view the app: [Tech Blog](url.com)
