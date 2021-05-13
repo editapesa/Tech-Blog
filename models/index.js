@@ -1,5 +1,6 @@
 const User = require('./User');
 const Blog = require('./Blog');
+//add const Comment ?? and relationships below
 
 User.hasMany(Blog, {
     foreignKey: 'user_id',
