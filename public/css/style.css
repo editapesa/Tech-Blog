@@ -4,6 +4,18 @@
     box-sizing: border-box;
   }
 
+header {
+  background-color: lightskyblue;
+}
+
 body {
-  background-color: bisque;
+  background-color:lightgray;
+}
+
+#blog-title {
+  font-size: 20px;
+}
+
+#user-name-date {
+  text-align: right;
 }
