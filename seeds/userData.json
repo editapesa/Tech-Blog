@@ -1,17 +1,14 @@
 [
     {
         "username": "Anthony",
-        // "email": "tony@aol.com",
         "password": "rockaway"
     },
     {
         "username": "Jenny",
-        // "email": "jen@gmail.com",
         "password": "hvymetal"
     },
     {
         "username": "Gia",
-        // "email": "gia@msn.com",
         "password": "giarocks"
     }
 ]
