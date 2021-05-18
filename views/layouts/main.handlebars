@@ -12,6 +12,30 @@
 </head>
 
 <body>
+    <div>
+        <header class='p-4'>           
+            <nav class='nav mb-3'>
+                {{#if logged_in}}
+                <a class='nav-link text-dark' href='/'>Home</a>
+                <a class='nav-link text-dark' href='/dashboard'>Dashboard</a>
+                <button class='no-button nav-link text-dark' id='logout'>Logout</button>
+                {{else}}
+                <a class='nav-link text-dark' href='/login'>Login</a>
+                {{/if}}
+            </nav>
+            <h1 class='w-50 border border-dark text-center text-secondary p-3 bg-light rounded'>The Tech Blog</h1>
+        </header>
     
+        <main>
+            {{{ body }}}
+        </main>
+        <footer>
+
+        </footer>
+    </div>
+
+    {{#if logged_in}}
+    <script src='../../public/js/logout.js'></script>
+    {{/if}}
 </body>
 </html>
