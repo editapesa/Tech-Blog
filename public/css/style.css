@@ -16,6 +16,10 @@ body {
   font-size: 20px;
 }
 
+#blog-title a {
+  color: white;
+}
+
 #username-date {
   text-align: right;
 }
