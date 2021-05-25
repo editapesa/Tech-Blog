@@ -1,0 +1,24 @@
+<div class='container p-3'>
+    <div class='row border border-dark bg-light'>
+        <div class='col bg-secondary p-4'>
+        <h1>My Dashboard</h1>
+        </div>
+    </div>
+</div>
+
+<div class='container p-3'>
+    <div class='row border border-dark bg-light'>
+        <div class='col bg-secondary text-white p-2'>Edit Post</div>
+        {{#each blogs as |blog|}}
+        <div class='form-group p-3'>
+            <label for='edit-post-title'>Title:</label>
+            <textarea class='form-control' rows='1' id='edit-post-title'>{{blog.title}}</textarea>
+        </div>
+        <div class='form-group p-3'>
+            <label for='edit-post-content'>Content:</label>
+            <textarea class='form-control' rows='5' id='edit-post-content'>{{blog.contents}}</textarea>
+        </div>
+        <button type='button' class= 'btn btn-secondary btn-lg btn-block' data-id='{{blog.id}}'>Update Post</button>
+        <button type='button' class= 'btn btn-secondary btn-lg btn-block' data-id='{{blog.id}}'>Delete</button>
+    </div>
+</div>
