@@ -85,5 +85,22 @@ router.get('/signup', async (req, res) => {
     }
 });
 
+router.get('/newpost', async (req, res) => {
+    const userData = await User.findByPk(req.session.user_id, {
+        attributes: { exclude: ['password'] },
+        include: [{ model: Blog }],
+    });
+    
+    const user = userData.get({ plain: true });
+
+    try {
+        res.render('newpost', {
+            ...user,
+            logged_in: true
+        });
+    } catch (err) {
+        res.status(500).json(err);
+    }
+});
 
 module.exports = router;
