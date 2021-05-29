@@ -90,8 +90,8 @@ router.get('/newpost', async (req, res) => {
         attributes: { exclude: ['password'] },
         include: [{ model: Blog }],
     });
-    
-    const user = userData.get({ plain: true });
+
+const user = userData.get({ plain: true });
 
     try {
         res.render('newpost', {
