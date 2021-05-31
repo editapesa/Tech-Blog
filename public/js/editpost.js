@@ -7,10 +7,13 @@ const delBtnHandler = async (event) => {
         });
 
         if (response.ok) {
-            document.location.replace('/editpost');
+            document.location.replace('/dashboard');
         } else {
             alert('Failed to delete blog post');
         }
     }
 };
 
+document 
+    .querySelector('.blog-list')
+    .addEventListener('click', delBtnHandler);

@@ -1,23 +1,23 @@
 const commentFormHandler = async (event) => {
     event.preventDefault();
 
-    const comment = document.querySelector('#comment').value.trim();
+    const description = document.querySelector('#comment').value.trim();
 
-    const id = window.location.toString().split('/')[
-        window.location.toString().split('/').length - 1
-    ];
+    // const id = window.location.toString().split('/')[
+    //     window.location.toString().split('/').length - 1
+    // ];
 
-    if (comment) {
-        const response = await fetch(`/api/blogs/${id}`, {
-            method: 'PUT',
-            body: JSON.stringify({ comment }),
+    if (description) {
+        const response = await fetch(`/api/comments`, {
+            method: 'POST',
+            body: JSON.stringify({ description }),
             headers:{
                 'Content-Type': 'application/json',
             },
         });
 
         if (response.ok) {
-            document.location.replace(`/blog/${id}`);
+            document.location.replace('/comment');
         } else {
             alert('Failed to create a comment');
         }

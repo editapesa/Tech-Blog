@@ -8,9 +8,10 @@
 
 <div class='container p-3'>
     <div class='row border border-dark bg-light'>
-        <div class='col bg-secondary text-white p-2'>Edit Post</div>
         {{#each blogs as |blog|}}
-        <div class='form-group p-3'>
+        <div class='col bg-secondary text-white p-2'>Edit Post</div>
+        
+        <div class='form-group p-3 blog-list'>
             <label for='edit-post-title'>Title:</label>
             <textarea class='form-control' rows='1' id='edit-post-title'>{{blog.title}}</textarea>
         </div>
@@ -18,8 +19,13 @@
             <label for='edit-post-content'>Content:</label>
             <textarea class='form-control' rows='5' id='edit-post-content'>{{blog.contents}}</textarea>
         </div>
-        <button type='button' class= 'btn btn-secondary btn-lg btn-block' data-id='{{blog.id}}'>Update Post</button>
-        <button type='button' class= 'btn btn-secondary btn-lg btn-block' data-id='{{blog.id}}'>Delete</button>
+        <div class='col-md-6 pb-4'>
+            <button class= 'btn btn-success btn-lg' id='update-blog'>Update Post</button>
+        </div>
+        <div class='col-md-6 pb-4'>
+            <button class= 'btn btn-warning btn-lg' data-id='{{blog.id}}'>Delete Post</button>
+        </div>
+        {{/each}}
     </div>
 </div>
 
