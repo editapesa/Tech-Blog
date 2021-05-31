@@ -11,9 +11,11 @@
     <div class='row border border-dark bg-light'>
         <div class='col bg-secondary p-4'></div>
         {{#each comments as |comment|}}
-        <p class='bg-light p-3' id='blog-comment'>{{comment}}></p>
+        <p class='bg-light p-3' id='blog-comment'>{{comment.description}}></p>
         <p class='bg-light p-3' id='commentor-date'> - {{user.username}} , {{format_date date_created}}></p>
         {{/each}}
     </div>
 </div>
 {{/if}}
+
+{{!-- <script src='./js/postcomment.js'></script> --}}

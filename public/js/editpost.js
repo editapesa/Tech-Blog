@@ -14,6 +14,33 @@ const delBtnHandler = async (event) => {
     }
 };
 
+const updateFormHandler = async (event) => {
+    event.preventDefault();
+
+    const title = document.querySelector('#edit-post-title').value.trim();
+    const contents = document.querySelector('#edit-post-content').value.trim();
+
+    if (title && contents) {
+        const response = await fetch(`/api/blogs`, {
+            method: 'PUT',
+            body: JSON.stringify({ title, contents }),
+            headers:{
+                'Content-Type': 'application/json',
+            },
+        });
+
+        if (response.ok) {
+            document.location.replace('/dashboard');
+        } else {
+            alert('Failed to create blog post');
+        }
+     }
+};
+
 document 
     .querySelector('.blog-list')
     .addEventListener('click', delBtnHandler);
+
+document
+    .querySelector('.blog-list')
+    .addEventListener('submit', updateFormHandler);
