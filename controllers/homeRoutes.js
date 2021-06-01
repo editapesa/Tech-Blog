@@ -126,22 +126,18 @@ const user = userData.get({ plain: true });
     }
 });
 
-router.get('/editpost', async (req, res) => {
+router.get('/editpost/:id', async (req, res) => {
+    const userData = await User.findByPk(req.session.user_id, {
+        attributes: { exclude: ['password'] },
+        include: [{ model: Blog }],
+    });
+
+const user = userData.get({ plain: true });
+
     try {
-        const blogData = await Blog.findByPk(req.params.id, {
-            include: [
-                { 
-                    model: User,
-                    attributes: ['username'], 
-                },
-            ],
-        });
-
-    const blog = blogData.get({ plain: true });
-
         res.render('editpost', {
-            ...blog,
-            logged_in: req.session.logged_in
+            ...user,
+            logged_in: true
         });
     } catch (err) {
         res.status(500).json(err);
