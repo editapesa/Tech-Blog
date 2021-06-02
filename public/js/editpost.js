@@ -17,11 +17,12 @@ const delBtnHandler = async (event) => {
 const updateFormHandler = async (event) => {
     event.preventDefault();
 
+    const id = event.target.getAttribute('data-id');
     const title = document.querySelector('#edit-post-title').value.trim();
     const contents = document.querySelector('#edit-post-content').value.trim();
 
     if (title && contents) {
-        const response = await fetch(`/api/blogs`, {
+        const response = await fetch(`/api/blogs/${id}`, {
             method: 'PUT',
             body: JSON.stringify({ title, contents }),
             headers:{
@@ -38,9 +39,9 @@ const updateFormHandler = async (event) => {
 };
 
 document 
-    .querySelector('.blog-list')
+    .querySelector('#delete-btn')
     .addEventListener('click', delBtnHandler);
 
 document
-    .querySelector('.blog-list')
+    .querySelector('#update-blog')
     .addEventListener('submit', updateFormHandler);

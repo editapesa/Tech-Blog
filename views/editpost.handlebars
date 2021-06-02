@@ -7,8 +7,8 @@
 </div>
 
 <div class='container p-3'>
-    <div class='row border border-dark bg-light'>
-        {{#each blogs as |blog|}}
+    <form class='row border border-dark bg-light' id='update-blog' data-id='{{blog.id}}'>
+        {{!-- {{#each blogs as |blog|}} --}}
         <div class='col bg-secondary text-white p-2'>Edit Post</div>
         
         <div class='form-group p-3 blog-list'>
@@ -20,13 +20,13 @@
             <textarea class='form-control' rows='5' id='edit-post-content'>{{blog.contents}}</textarea>
         </div>
         <div class='col-md-6 pb-4'>
-            <button class= 'btn btn-success btn-lg' id='update-blog'>Update Post</button>
+            <button class= 'btn btn-success btn-lg' >Update Post</btton>
         </div>
         <div class='col-md-6 pb-4'>
-            <button class= 'btn btn-warning btn-lg' data-id='{{blog.id}}'>Delete Post</button>
+            <button class= 'btn btn-warning btn-lg' id='delete-btn' data-id='{{blog.id}}'>Delete Post</button>
         </div>
-        {{/each}}
-    </div>
+        {{!-- {{/each}} --}}
+    </form>
 </div>
 
-<script src='./js/editpost.js'></script>
+<script src='/js/editpost.js'></script>

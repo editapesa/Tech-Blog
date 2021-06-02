@@ -127,17 +127,16 @@ const user = userData.get({ plain: true });
 });
 
 router.get('/editpost/:id', async (req, res) => {
-    const userData = await User.findByPk(req.session.user_id, {
-        attributes: { exclude: ['password'] },
-        include: [{ model: Blog }],
+    const blogData = await Blog.findByPk(req.params.id, {
+        include: [{ model: User }],
     });
-
-const user = userData.get({ plain: true });
+// console.log(userData);
+const blog = blogData.get({ plain: true });
 
     try {
         res.render('editpost', {
-            ...user,
-            logged_in: true
+            blog,
+            // logged_in: true
         });
     } catch (err) {
         res.status(500).json(err);

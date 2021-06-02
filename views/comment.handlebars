@@ -8,7 +8,7 @@
 
 {{#if comments.length}}
 <div class='container p-3'>
-    <div class='row border border-dark bg-light'>
+    <div class='row border border-dark bg-light' id='comment-form'>
         <div class='col bg-secondary p-4'></div>
         {{#each comments as |comment|}}
         <p class='bg-light p-3' id='blog-comment'>{{comment.description}}></p>
