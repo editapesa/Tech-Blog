@@ -28,18 +28,15 @@ router.get('/blog/:id', async (req, res) => {
     try {
         const blogData = await Blog.findByPk(req.params.id, {
             include: [
-                {
-                    model: User,
-                    attributes: ['username'],
-                },
+                { model: User},
+                { model: Comment}
             ],
         });
 
         const blog = blogData.get({ plain: true });
 
         res.render('blog', {
-            ...blog,
-            logged_in: req.session.logged_in
+            blog,
         });
     } catch (err) {
         res.status(500).json(err);
@@ -130,13 +127,12 @@ router.get('/editpost/:id', async (req, res) => {
     const blogData = await Blog.findByPk(req.params.id, {
         include: [{ model: User }],
     });
-// console.log(userData);
+
 const blog = blogData.get({ plain: true });
 
     try {
         res.render('editpost', {
             blog,
-            // logged_in: true
         });
     } catch (err) {
         res.status(500).json(err);
@@ -144,19 +140,17 @@ const blog = blogData.get({ plain: true });
 });
 
 router.get('/comment/:id', async (req, res) => {
-    try {
-        const commentData = await Comment.findByPk(req.params.id, {
-            include: [
-                { model: User, attributes: ['username'] },
-                { model: Blog }
-            ],
-        });
+    const blogData = await Blog.findByPk(req.params.id, {
+        include: [
+            { model: User },
+        ],
+    });
 
-        const comment = commentData.get({ plain: true });
+    const comment = blogData.get({ plain: true });
 
+    try{
         res.render('comment', {
-            ...comment,
-            logged_in: req.session.logged_in
+           blog,
         });
     } catch (err) {
         res.status(500).json(err);
@@ -164,19 +158,17 @@ router.get('/comment/:id', async (req, res) => {
 });
 
 router.get('/comment', async (req, res) => {
-    try {
-        const commentData = await Comment.findByPk(req.params.id, {
-            include: [
-                { model: User, attributes: ['username'] },
-                { model: Blog }
-            ],
-        });
+    const commentData = await Comment.findByPk(req.params.id, {
+        include: [
+            { model: Blog }
+        ],
+    });
 
-        const comment = commentData.get({ plain: true });
+    const comment = commentData.get({ plain: true });
 
+    try{
         res.render('comment', {
-            ...comment,
-            logged_in: req.session.logged_in
+           comment,
         });
     } catch (err) {
         res.status(500).json(err);
